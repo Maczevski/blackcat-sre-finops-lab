@@ -1,0 +1,37 @@
+# Credenciais e Variáveis de Ambiente Reais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Artefatos Binários e Compilados Java / Maven
+target/
+*.jar
+*.war
+*.class
+*.bak
+*.tmp
+BOOT-INF/
+META-INF/
+
+# Binários e Logs Brutos Volumosos do k6
+k6.exe
+*.log
+
+# Ambiente Python e Cache
+__pycache__/
+.venv/
+venv/
+*.pyc
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+
+# Arquivos de Sistema Operacional / IDEs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

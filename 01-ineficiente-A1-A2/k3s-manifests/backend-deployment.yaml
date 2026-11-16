@@ -1,0 +1,72 @@
+# ==============================================================================
+# MANIFESTO KUBERNETES (K3s) — TRATAMENTO BASELINE INEFICIENTE (CENÁRIOS A1 E A2)
+# - Cenário A1: Aplicado sobre instância AWS EC2 t3.small (2 vCPU, 2 GiB RAM - US$ 0,0208/h)
+# - Cenário A2: Aplicado sobre instância AWS EC2 t3.medium (2 vCPU, 4 GiB RAM - US$ 0,0416/h)
+# - Imagem ECR: <AWS_ACCOUNT_ID>.dkr.ecr.us-east-2.amazonaws.com/blackcat-backend:tcc-v4-actuator-v3
+# - JVM Runtime: Ergonomia padrão OpenJDK 21 (MaxRAMPercentage=25% de 768Mi = 185,62 MiB Heap)
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: blackcat
+  labels:
+    app: backend
+    experiment.tcc/treatment: baseline-v4
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "8080"
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: backend
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.us-east-2.amazonaws.com/blackcat-backend:tcc-v4-actuator-v3
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1200m"
+              memory: "768Mi"
+          env:
+            - name: DB_HOST
+              value: "mysql"
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_DATABASE
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
+            - name: SPRING_LIQUIBASE_PARAMETERS_INITIAL_ADMIN_PASSWORD_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: INITIAL_ADMIN_PASSWORD_HASH

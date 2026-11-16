@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blackcat-ingress-http
+  namespace: blackcat
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: blackcat-redirect-to-https@kubernetescrd
+spec:
+  rules:
+    - host: blackcat.mugiwarasgroup.com.br
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blackcat-ingress
+  namespace: blackcat
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls.certresolver: le
+    traefik.ingress.kubernetes.io/router.priority: "10"
+spec:
+  tls:
+    - hosts:
+        - blackcat.mugiwarasgroup.com.br
+  rules:
+    - host: blackcat.mugiwarasgroup.com.br
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80

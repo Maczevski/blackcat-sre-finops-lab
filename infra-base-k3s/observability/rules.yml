@@ -1,0 +1,21 @@
+groups:
+  - name: finops_k8s_requests
+    rules:
+      - record: kube_pod_container_resource_requests
+        expr: vector(536870912)
+        labels:
+          resource: memory
+          namespace: blackcat
+          container: backend
+      - record: kube_pod_container_resource_requests
+        expr: vector(402653184)
+        labels:
+          resource: memory
+          namespace: blackcat
+          container: mysql
+      - record: kube_pod_container_resource_requests
+        expr: vector(134217728)
+        labels:
+          resource: memory
+          namespace: blackcat
+          container: frontend

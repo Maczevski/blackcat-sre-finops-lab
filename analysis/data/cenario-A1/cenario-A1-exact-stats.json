@@ -1,0 +1,321 @@
+{
+  "http_req_duration": {
+    "count": 40796,
+    "mean": 831.33,
+    "std": 617.16,
+    "min": 16.42,
+    "p25": 386.21,
+    "p50": 774.83,
+    "p75": 1032.1,
+    "iqr": 645.89,
+    "p90": 1499.01,
+    "p95": 2081.97,
+    "p99": 3082.49,
+    "max": 5875.98,
+    "le_300ms_pct": 20.51,
+    "le_500ms_pct": 30.67,
+    "le_800ms_pct": 52.51,
+    "le_1200ms_pct": 84.05
+  },
+  "op_login_duration": {
+    "count": 24479,
+    "mean": 818.54,
+    "std": 344.87,
+    "min": 85.5,
+    "p25": 613.16,
+    "p50": 828.88,
+    "p75": 996.69,
+    "iqr": 383.53,
+    "p90": 1165.25,
+    "p95": 1298.31,
+    "p99": 2016.94,
+    "max": 4061.18,
+    "le_300ms_pct": 6.55,
+    "le_500ms_pct": 16.8,
+    "le_800ms_pct": 46.02,
+    "le_1200ms_pct": 91.61
+  },
+  "op_catalogo_duration": {
+    "count": 8161,
+    "mean": 1449.89,
+    "std": 884.44,
+    "min": 35.75,
+    "p25": 759.49,
+    "p50": 1292.12,
+    "p75": 1980.54,
+    "iqr": 1221.05,
+    "p90": 2653.22,
+    "p95": 3067.54,
+    "p99": 4130.95,
+    "max": 5875.98,
+    "le_300ms_pct": 4.41,
+    "le_500ms_pct": 11.43,
+    "le_800ms_pct": 27.06,
+    "le_1200ms_pct": 46.22
+  },
+  "op_venda_duration": {
+    "count": 8155,
+    "mean": 250.79,
+    "std": 212.35,
+    "min": 16.42,
+    "p25": 141.98,
+    "p50": 190.77,
+    "p75": 273.47,
+    "iqr": 131.49,
+    "p90": 465.44,
+    "p95": 614.92,
+    "p99": 1100.67,
+    "max": 3161.39,
+    "le_300ms_pct": 78.5,
+    "le_500ms_pct": 91.54,
+    "le_800ms_pct": 97.44,
+    "le_1200ms_pct": 99.2
+  },
+  "timeouts_60s": 0,
+  "k6_summary": {
+    "root_group": {
+      "path": "",
+      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "groups": {
+        "setup": {
+          "path": "::setup",
+          "id": "5c0f8025f7e0b6654089e5b00e950f1a",
+          "groups": {},
+          "checks": {},
+          "name": "setup"
+        }
+      },
+      "checks": {
+        "[Login] status 200": {
+          "name": "[Login] status 200",
+          "path": "::[Login] status 200",
+          "id": "e4cc57029fe1696c65a01b3815890119",
+          "passes": 24479,
+          "fails": 0
+        },
+        "[Login] token JWT presente": {
+          "path": "::[Login] token JWT presente",
+          "id": "2e861c04000ef64081b83e3327b1589d",
+          "passes": 24479,
+          "fails": 0,
+          "name": "[Login] token JWT presente"
+        },
+        "[Cat\u00e1logo] status 200": {
+          "name": "[Cat\u00e1logo] status 200",
+          "path": "::[Cat\u00e1logo] status 200",
+          "id": "6a33fde8975ddd4ae737f61ea674d4b9",
+          "passes": 8161,
+          "fails": 0
+        },
+        "[Cat\u00e1logo] retornou lista n\u00e3o vazia": {
+          "id": "e9604cbccbef113e07e23997886aae21",
+          "passes": 8161,
+          "fails": 0,
+          "name": "[Cat\u00e1logo] retornou lista n\u00e3o vazia",
+          "path": "::[Cat\u00e1logo] retornou lista n\u00e3o vazia"
+        },
+        "[Venda] status 200": {
+          "name": "[Venda] status 200",
+          "path": "::[Venda] status 200",
+          "id": "10b4cf601b70172ec79a544589b13dee",
+          "passes": 8155,
+          "fails": 0
+        },
+        "[Venda] confirma\u00e7\u00e3o de sucesso": {
+          "name": "[Venda] confirma\u00e7\u00e3o de sucesso",
+          "path": "::[Venda] confirma\u00e7\u00e3o de sucesso",
+          "id": "15901e419caf98d7afe15a918abde5db",
+          "passes": 8155,
+          "fails": 0
+        }
+      },
+      "name": ""
+    },
+    "metrics": {
+      "http_req_failed": {
+        "passes": 0,
+        "fails": 40796,
+        "thresholds": {
+          "rate<0.01": false
+        },
+        "value": 0
+      },
+      "iterations": {
+        "count": 40795,
+        "rate": 10.791507747723683
+      },
+      "vus_max": {
+        "min": 15,
+        "max": 15,
+        "value": 15
+      },
+      "http_req_connecting": {
+        "avg": 0.00017009976468281205,
+        "min": 0,
+        "med": 0,
+        "max": 0.48283,
+        "p(90)": 0,
+        "p(95)": 0
+      },
+      "data_sent": {
+        "count": 35374020,
+        "rate": 9357.495058172142
+      },
+      "http_req_blocked": {
+        "p(95)": 0.000826,
+        "avg": 0.012258539832336487,
+        "min": 0.000203,
+        "med": 0.000572,
+        "max": 79.871673,
+        "p(90)": 0.000722
+      },
+      "op_venda_total_count": {
+        "count": 8155,
+        "rate": 2.157243428917432
+      },
+      "http_reqs": {
+        "count": 40796,
+        "rate": 10.79177227788051
+      },
+      "sli_availability": {
+        "passes": 40795,
+        "fails": 0,
+        "thresholds": {
+          "rate>=0.99": false
+        },
+        "value": 1
+      },
+      "op_catalogo_success": {
+        "passes": 8161,
+        "fails": 0,
+        "value": 1
+      },
+      "op_login_duration": {
+        "p(90)": 1165.2478372,
+        "p(95)": 1298.3130861999996,
+        "avg": 818.5376900559731,
+        "min": 85.499809,
+        "med": 828.875985,
+        "max": 4061.176378,
+        "thresholds": {
+          "p(50)<=500": true,
+          "p(95)<=1200": true
+        }
+      },
+      "http_req_receiving": {
+        "p(95)": 1711.406508,
+        "avg": 253.15093805814357,
+        "min": 0.025959,
+        "med": 0.728181,
+        "max": 5582.162836,
+        "p(90)": 1088.862993
+      },
+      "http_req_waiting": {
+        "p(90)": 1076.921895,
+        "p(95)": 1206.5713145,
+        "avg": 578.029203921806,
+        "min": 14.982893,
+        "med": 549.574897,
+        "max": 4059.604857
+      },
+      "op_venda_duration": {
+        "p(95)": 614.9177732999995,
+        "avg": 250.78643734972485,
+        "min": 16.418158,
+        "med": 190.7722,
+        "max": 3161.390935,
+        "p(90)": 465.44011420000004,
+        "thresholds": {
+          "p(50)<=400": false,
+          "p(95)<=800": false
+        }
+      },
+      "iteration_duration": {
+        "avg": 1357.809165156977,
+        "min": 124.054179,
+        "med": 1099.8974625,
+        "max": 11502.621072,
+        "p(90)": 2544.3031570000003,
+        "p(95)": 3956.1914890000003
+      },
+      "op_login_success": {
+        "passes": 24479,
+        "fails": 0,
+        "value": 1
+      },
+      "http_req_tls_handshaking": {
+        "p(95)": 0,
+        "avg": 0.011444753431708992,
+        "min": 0,
+        "med": 0,
+        "max": 79.237961,
+        "p(90)": 0
+      },
+      "op_venda_success": {
+        "passes": 8155,
+        "fails": 0,
+        "thresholds": {
+          "rate>=0.99": false
+        },
+        "value": 1
+      },
+      "data_received": {
+        "count": 34282040113,
+        "rate": 9068633.447413007
+      },
+      "http_req_duration": {
+        "p(95)": 2081.96610975,
+        "avg": 831.3264017789505,
+        "min": 16.418158,
+        "med": 774.831345,
+        "max": 5875.983532,
+        "p(90)": 1499.014869,
+        "thresholds": {
+          "p(50)<=300": true,
+          "p(95)<=800": true
+        }
+      },
+      "op_catalogo_duration": {
+        "p(90)": 2653.215741,
+        "p(95)": 3067.541104,
+        "avg": 1449.8881420189966,
+        "min": 35.749228,
+        "med": 1292.120127,
+        "max": 5875.983532,
+        "thresholds": {
+          "p(50)<=250": true,
+          "p(95)<=500": true
+        }
+      },
+      "http_req_duration{expected_response:true}": {
+        "avg": 831.3264017789505,
+        "min": 16.418158,
+        "med": 774.831345,
+        "max": 5875.983532,
+        "p(90)": 1499.014869,
+        "p(95)": 2081.96610975
+      },
+      "vus": {
+        "value": 1,
+        "min": 1,
+        "max": 15
+      },
+      "http_req_sending": {
+        "med": 0.073862,
+        "max": 141.034202,
+        "p(90)": 0.094338,
+        "p(95)": 0.10948325,
+        "avg": 0.14625979899990257,
+        "min": 0.024732
+      },
+      "checks": {
+        "passes": 81590,
+        "fails": 0,
+        "value": 1
+      }
+    },
+    "setup_data": {
+      "initialToken": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiR0VTVE9SIiwibm9tZSI6IkFkbWluaXN0cmFkb3IgRXhwZXJpbWVudG8gU1JFIiwiaWQiOjEsInVzZXJuYW1lIjoic3JlX2FkbWluX3RjYyIsInN1YiI6InNyZV9hZG1pbl90Y2MiLCJpYXQiOjE3OTMxMzY5NzUsImV4cCI6MTc5MzE0MDU3NX0.OFz_-2Z-6W5jtkuiTZVzSdxS8qgyOlYvwwrcR2iBbeA"
+    }
+  }
+}
